@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="css/reset.min.css">
+<link rel="stylesheet" href="css/semantic.css">
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/semantic.min.js"></script>
+<script>
+$(function() {
+	$(".sub.menu").hide();
+	$('.ui.sidebar').sidebar('attach events', '.slidemenu');
+	setmenuwidth();
+	
+	
+	$(".header.item").click(function(){
+		console.log($(this).next());
+		$(this).next(".sub.menu").toggle("slow");
+	});
+	
+	$( window ).resize(function() {
+		setmenuwidth();
+	});
+	//$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
+	
+});
+function checkEmail(remail) {
+	if (remail.search(/^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/)!=-1) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function setmenuwidth(){
+	var width = $( window ).width();
+		if(width < 500 ){
+			$(".ui.sidebar.menu").attr("style","width:50%;");
+		}
+		if(width > 500 && width <1000 ){
+			$(".ui.sidebar.menu").attr("style","width:25%;");
+		}
+		if(width > 1000 ){
+			$(".ui.sidebar.menu").attr("style","width:15%;");
+		}
+}
+</script>
+
+<style>
+
+
+
+.searchtype li {
+	font-size: 12px;
+	list-style-type:none;
+	float:left;
+	margin-left:15px;
+}
+
+.item {
+	font-size: 12px;
+}
+
+.image{
+	
+}
+
+.items{
+	padding-left:0px;
+}
+
+.items li{
+	font-size: 12px;
+	list-style-type:none;
+}
+
+.lrow{
+	float:left;
+
+}
+
+.rrow{
+	float:right;
+}
+
+.sub.menu .item{
+	font-size:12px;
+}
+
+@media screen and (max-width: 1000px) {
+    .ui.top.menu a:nth-child(n+2){
+		display:none;
+	}
+	.right.menu div:nth-child(n+2){
+		display:none;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+    .ui.top.menu a:nth-child(1){
+		display:none;
+	}
+}
+
+</style>
+</head>
+<body>
+<div class="ui labeled icon left inline vertical sidebar menu" style="width:50%">
+	<a class="item">
+		<div class="ui small input" style="">
+			<input placeholder="商品搜尋" type="text" style="width:30px;">
+				<button class="ui red icon button">
+					<i class="search icon"></i>
+				</button>
+		</div>
+	</a>
+	
+	<a class="header item" style="background-color:#F00000;color:white;">
+		MENU
+	</a>
+	<a class="header item">
+		登入 / 註冊
+	</a>
+	<a class="header item">
+		我的帳戶
+	 </a>
+	<a class="header item" >
+        商品分類
+      </a>
+		<div class="sub menu">
+		 <a class="item">
+			品味「創」策展
+		  </a>
+		  <a class="item">
+			手機、相機、配件
+		  </a>
+		 <a class="item">
+			電腦、平板、周邊
+		  </a>
+		  <a class="item">
+			服裝、內睡衣
+		  </a>
+		  <a class="item">
+			鞋子、包包
+		  </a>
+		  <a class="item">
+			美妝保養、保健食品
+		  </a>
+		  <a class="item">
+			品味「創」策展
+		  </a>
+		  <a class="item">
+			手機、相機、配件
+		  </a>
+		  <a class="item">
+			電腦、平板、周邊
+		  </a>
+		  <a class="item">
+			服裝、內睡衣
+		  </a>
+		  <a class="item">
+			鞋子、包包
+		  </a>
+		  <a class="item">
+			美妝保養、保健食品
+		  </a>
+		</div>
+	<a class="header item">
+		購物車
+	 </a>
+	<a class="header item">
+		服務說明
+	</a>
+	<a class="header item">
+		訂閱電子報 
+	</a>
+</div>
+
+<div class="ui top fixed menu" >
+	<a class="slidemenu item">
+		<i class="sidebar icon"></i>
+		MENU
+	</a>
+			<a class="item">
+				訂閱電子報 
+			</a>
+			<a class="item">
+				加入粉絲團 
+			</a>
+			<a class="item">
+				讚 
+			</a>
+			<a class="item">
+				加入好友 
+			</a>  
+
+			<div class="right menu">
+				<div class="item">
+					歡迎來 friDay購物
+				</div>
+				<div class="item">
+					登入 / 註冊
+				</div>
+				<div class="item">
+
+					我的帳戶
+				</div>
+				<div class="item">
+					購物車
+				</div>
+				<div class="item">
+					服務說明
+				</div>
+			</div>
+</div>
+
+<div class="pusher">
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+
+<div class="ui page grid">
+
+	<div class="ui hidden divider"></div>
+	
+	<div class="sixteen wide mobile five wide computer column">
+		<div class="ui fluid image">
+			<img src="logo_03.gif">
+		</div>
+	</div>
+	<div class="eight wide computer only column">
+		<div class="ui fluid action input">
+			<input placeholder="請輸入商品關鍵字" type="text">
+				<button class="ui red icon button">
+					<i class="search icon"></i>
+				</button>
+		</div>
+		 <ul class="searchtype">
+			<li style="margin-left:-30px; color:red;">熱門：</li>
+			<li>紙可拍</li>
+			<li>行李箱</li>
+			<li>coach</li>
+			<li>吸塵器</li>
+			<li>apple</li>
+		</ul>
+
+	</div>
+	<div class="sixteen wide mobile three wide computer column">
+		<div class="ui fluid image">
+			<img src="87d8b2.jpg">
+		</div>
+	</div>
+	
+	<div class="one column computer only row">
+		<div class="ui image">
+			<img src="3d4d3f.jpg">
+		</div>
+	</div>
+	
+	<div class="one column tablet only row">
+		<div class="ui image">
+			<img src="3d4d3f.jpg">
+		</div>
+	</div>
+
+	<div class="equal height stretched row">
+		<div id="hidemenu" class="three wide  computer only column" style="padding-left:0px;padding-right:0px;">
+			<div class="hidemenu small ui vertical  menu">
+			  <a class="header item"><h4 class="center aligned">商品分類</h4></a>
+			  <a class="item">品味「創」策展</a>
+			  <a class="item">手機、相機、配件</a>
+			  <a class="item">電腦、平板、周邊</a>
+			  <a class="item">家電、視聽、電玩</a>
+			  <a class="item">服裝、內睡衣</a>
+			  <a class="item">鞋子、包包</a>
+			  <a class="item">美妝保養、保健食品</a>
+			  <a class="item">品味「創」策展</a>
+			  <a class="item">手機、相機、配件</a>
+			  <a class="item">電腦、平板、周邊</a>
+			  <a class="item">家電、視聽、電玩</a>
+			  <a class="item">服裝、內睡衣</a>
+			  <a class="item">鞋子、包包</a>
+			  <a class="item">美妝保養、保健食品</a>
+			  
+			</div>
+		</div>
+		<div class="thirteen wide column">
+			<div class="ui left aligned grid">
+				<div class="equal height stretched  row">
+				<div class="one wide column"></div>
+				<div class="fifteen wide tablet only computer only column">
+					<div class="ui horizontal list">
+						<div class="item" style="margin-left:50px;">3C情報誌</div>
+						<div class="item" style="margin-left:50px;">母親節蛋糕首選</div>
+						<div class="item" style="margin-left:50px;">夏日時尚穿搭Show</div>	
+						<div class="item" style="margin-left:50px;">快樂鳥男性強健聖品↘1960</div>							
+					</div>
+				</div>
+
+					<!-- computer only-->
+					<div class="three wide computer only column" >
+						<div class="ui one column grid" >
+						
+							<div class="column">
+								<h5 style="margin:0px 0 0 0px;">手機</h5>				
+								<ul class="items">
+									<li class="lrow">ZenFone2</li>
+									<li class="rrow">HTC M9</li>
+									<li class="lrow">HTC 620/62</li>
+									<li class="rrow">LG AKA</li>
+									<li class="lrow">iPhone6 Plu</li>
+									<li class="rrow">iPhone6</li>
+								</ul>
+							</div>
+							
+							
+							<div class="column">
+								<h5  style="margin:0px 0 0 0px;">數位相機</h5>				
+								<ul class="items">
+									<li class="lrow">ZenFone2</li>
+									<li class="rrow">HTC M9</li>
+									<li class="lrow">HTC 620/62</li>
+									<li class="rrow">LG AKA</li>
+									<li class="lrow">iPhone6 Plu</li>
+									<li class="rrow">iPhone6</li>
+								</ul>
+							</div>		
+							
+
+							<div class="column">
+								<h5 style="margin:0px 0 0 0px;">手機配件/耳機</h5>				
+								<ul class="items">
+									<li class="lrow">ZenFone2</li>
+									<li class="rrow">HTC M9</li>
+									<li class="lrow">HTC 620/62</li>
+									<li class="rrow">LG AKA</li>
+									<li class="lrow">iPhone6 Plu</li>
+									<li class="rrow">iPhone6</li>
+								</ul>
+							</div>
+							
+							<div class="column">		
+								<h5 style="margin:0px 0 0 0px;">相機配件</h5>				
+								<ul class="items">
+									<li class="lrow">ZenFone2</li>
+									<li class="rrow">HTC M9</li>
+									<li class="lrow">HTC 620/62</li>
+									<li class="rrow">LG AKA</li>
+									<li class="lrow">iPhone6 Plu</li>
+									<li class="rrow">iPhone6</li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="ten wide computer only column">
+						<div class="ui grid">
+							<div class="equal height stretched  row">
+								<div class="twelve wide column">
+									<div class="ui fluid image">
+										<img src="3466ff.jpg">
+									</div>
+								</div>
+								
+								<div class="four wide column">
+										<img src="f3716f.jpg">
+										<img src="137953.jpg">
+								</div>
+							</div>
+							<div class="three column row">
+								<div class="column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+								<div class="column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+
+								<div class="column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="three wide computer only column">
+						<div class="ui center aligned one column grid">
+							<div class="column">
+								<div class="ui fluid image">
+									<img src="9d66b8.jpg">
+								</div>
+							</div>
+							<div class="column">
+								<h4 class="center aligned">大家都在friday買</h4>
+								<p style="font-size: 11px;">雲林縣莊小姐於00:23買了</p>
+								<p style="font-size: 11px;">【 MILAFOR】巴黎清新撞色蝙蝠包-清新白</p>
+							</div>
+						</div>
+					</div>
+					
+					<!-- tablet only-->
+					<div class="sixteen wide tablet only column">
+						<div class="ui grid">
+							<div class="equal height stretched  row">
+								<div class="twelve wide column">
+									<div class="ui fluid image">
+										<img src="3466ff.jpg">
+									</div>
+								</div>
+								
+								<div class="four wide column">
+										<img src="f3716f.jpg">
+										<img src="137953.jpg">
+								</div>
+							</div>
+							<div class="three column row">
+								<div class="column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+								<div class="column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+
+								<div class="column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="ui sixteen wide tablet only column">
+						<div class="ui fluid image">
+							<img src="9d66b8.jpg">
+						</div>	
+					</div>
+					<!-- mobile only-->
+					<div class="sixteen wide mobile only column">
+						<div class="ui grid">		
+							<div class="sixteen wide column">
+									<div class="ui fluid image">
+										<img src="3466ff.jpg">
+									</div>
+								</div>
+								
+								
+								<div class="sixteen wide column">
+									<div class="ui fluid image">
+										<img src="f3716f.jpg">
+									</div>
+								</div>
+								<div class="sixteen wide column">	
+									<div class="ui fluid image">
+										<img src="137953.jpg">
+									</div>
+								</div>
+								
+								<div class="sixteen wide column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+								<div class="sixteen wide column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+
+								<div class="sixteen wide column">
+									<div class="ui fluid image">
+										<img src="0d3eac.jpg">
+									</div>
+								</div>
+						</div>
+					</div>
+					
+					<div class="ui sixteen wide mobile only column">
+						<div class="ui fluid image">
+							<img src="9d66b8.jpg">
+						</div>	
+					</div>
+					<!-- -->
+			</div>
+			</div>
+		</div>
+	</div>
+		
+		<div class="equal height stretched row">
+			<div class="three wide computer only column">
+				<div class="ui image">
+					<img src="dbebd6.jpg">
+				</div>
+			</div>
+			
+			<div class="ten wide column">
+				<div class="ui grid">
+					<div class="sixteen wide mobile four wide tablet four wide computer column">
+						<h3 class="">全站熱銷</h3>
+					</div>
+					<div class="right aligned twelve wide tablet only computer only column">
+						<div class="ui  horizontal list">
+							<div class="item">好康春裝</div>
+							<div class="item">3C限量</div>
+							<div class="item">蛋糕特輯</div>
+							<div class="item">設計生活</div>
+						</div>
+					</div>
+					<div class="center aligned sixteen wide mobile only column">
+						<div class="ui  horizontal list">
+							<div class="item">好康春裝</div>
+							<div class="item">3C限量</div>
+							<div class="item">蛋糕特輯</div>
+							<div class="item">設計生活</div>
+						</div>
+					</div>
+				</div>
+				<div class="ui padded grid">
+						<div class="sixteen wide mobile eight wide tablet four wide computer column">
+							<img class="ui image" src="s_1917709_a40598eac1_o.jpg">
+							<div class="value">【XD-Design】Tovo 萬能瑞士刀 </div>
+							<div style="float:left;"><h4>$599</h4></div>
+							<div style="float:right;" >搶購</div>					
+						</div>
+						
+						<div class="sixteen wide mobile eight wide tablet four wide computer column">
+							
+							<img class="ui image" src="s_1917709_a40598eac1_o.jpg">
+							<div class="value">【XD-Design】Tovo 萬能瑞士刀 </div>
+							<div style="float:left;"><h4>$599</h4></div>
+							<div style="float:right;" >搶購</div>
+							
+						</div>
+						
+						<div class="sixteen wide mobile eight wide tablet four wide computer column">
+							
+							<img class="ui image" src="s_1917709_a40598eac1_o.jpg">
+							<div class="value">【XD-Design】Tovo 萬能瑞士刀 </div>
+							<div style="float:left;"><h4>$599</h4></div>
+							<div style="float:right;" >搶購</div>
+							
+						</div>
+						
+						<div class="sixteen wide mobile eight wide tablet four wide computer column">
+				
+							<img class="ui image" src="s_1917709_a40598eac1_o.jpg">
+							<div class="value">【XD-Design】Tovo 萬能瑞士刀 </div>
+							<div style="float:left;"><h4>$599</h4></div>
+							<div style="float:right;" >搶購</div>
+					
+						</div>
+					</div>
+				
+				
+			</div>
+		
+			<div class="three wide computer only column">
+				<div class="header">達人專欄</div>
+				<div class="ui image">
+					<img src="6d1ff5.jpg">
+				</div>
+			</div>
+		</div>
+		
+			
+		<div class="center aligned row">
+			<div class="three wide computer only column">
+				<div class="ui image">
+					<img src="a52aa6.jpg">
+				</div>
+			</div>
+			
+			<div class="sixteen wide mobile sixteen wide tablet ten wide computer column">
+				<div class="ui center aligned one column grid">
+					<div class="tablet only computer only column">
+						<div class="ui image">
+							<img src="668543.jpg">
+						</div>
+					</div>
+					<div class="column">
+						<div class="ui image">
+							<img src="189169.jpg">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="three wide computer only column">
+				<div class="header">會員活動</div>
+				<div class="ui image">
+					<img src="635b10.jpg">
+				</div>
+			</div>
+			
+			<!--tablet only-->
+			<div class="ui hidden divider"></div>
+				<div class="four wide tablet only column">
+					<div class="header">達人專欄</div>
+					<div class="ui image">
+						<img src="6d1ff5.jpg">
+					</div>
+				</div>
+				<div class="four wide tablet only column">
+					<div class="ui image">
+						<img src="dbebd6.jpg">
+					</div>
+				</div>
+				<div class="four wide tablet only column">
+					<div class="ui image">
+						<img src="a52aa6.jpg">
+					</div>
+				</div>
+				<div class="four wide tablet only column">
+					<div class="header">會員活動</div>
+					<div class="ui image">
+						<img src="635b10.jpg">
+					</div>
+				</div>
+				<div class="ui hidden divider"></div>
+			<!--mobile only-->
+				<div class="sixteen wide mobile only column">
+					<div class="header">達人專欄</div>
+					<div class="ui fluid image">
+						<img src="6d1ff5.jpg">
+					</div>
+				</div>
+				<div class="sixteen wide mobile only column">
+					<div class="ui fluid image">
+						<img src="dbebd6.jpg">
+					</div>
+				</div>
+				<div class="sixteen wide mobile only column">
+					<div class="ui fluid image">
+						<img src="a52aa6.jpg">
+					</div>
+				</div>
+				<div class="sixteen wide mobile only column">
+					<div class="header">會員活動</div>
+					<div class="ui fluid image">
+						<img src="635b10.jpg">
+					</div>
+				</div>
+				<div class="ui hidden divider"></div>
+		<!---->
+			
+			
+		</div>
+			
+		<div class="sixteen wide column">
+			<div class="ui grid">
+				<div class="sixteen wide mobile four wide tablet four wide computer column">
+					<h3 class="">流行館</h3>
+				</div>
+				<div class="right aligned twelve wide tablet only computer only column">
+					<div class="ui  horizontal list">
+						<div class="item">春夏流行指標</div>
+						<div class="item">限量童趣聯名</div>
+						<div class="item">美肌活力UP</div>
+						<div class="item">早春時尚出遊</div>
+						<div class="item">時尚玩色趣</div>
+					</div>
+				</div>
+				
+				<div class="center aligned sixteen wide mobile only column">
+					<div class="ui  horizontal list">
+						<div class="item">春夏流行指標</div>
+						<div class="item">限量童趣聯名</div>
+						<div class="item">美肌活力UP</div>
+						<div class="item">早春時尚出遊</div>
+						<div class="item">時尚玩色趣</div>
+					</div>
+				</div>
+				
+				<div class="equal height stretched row">
+					<div class="sixteen wide mobile four wide tablet three wide computer column">
+						<img class="ui " src="10d27c.jpg">
+					</div>
+					
+					<div class="sixteen wide mobile twelve wide tablet thirteen wide computer column">
+						<div class="ui computer grid">
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+						  
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+							
+							<div class="sixteen wide mobile four wide tablet three wide computer column">
+								<img class="ui image" src="s_2166115_5a989d7c63_o.jpg">
+								 <div class="value">【STARMIMI】水彩花草滿版印樣洋裝 ＊SM (</div>
+									<div style="float:left;"><h4>$484</h4></div>
+									<div style="float:right;" >搶購</div>
+							</div>
+						 </div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		
+		<div class="ui hidden divider"></div>
+		
+		<!-- computer only-->
+		<div class=" three wide computer only column">
+			<div class="ui one column grid">
+				<div class="column">
+					<div class="ui fluid image">
+						<img src="logo1.jpg">
+					</div>
+				</div>
+				
+				<div class="column">
+					<div class="ui fluid image">
+						<img src="logo2.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- tablet only-->
+		<div class=" eight wide tablet only column">
+			<div class="ui fluid image">
+				<img src="logo1.jpg">
+			</div>
+		</div>
+		
+		<div class=" eight wide tablet only column">
+			<div class="ui fluid image">
+				<img src="logo2.jpg">
+			</div>
+		</div>
+		<!--mobile  only-->
+		<div class=" sixteen wide mobile only column">
+			<div class="ui fluid image">
+				<img src="logo1.jpg">
+			</div>
+		</div>
+		
+		
+		<div class="ten wide computer only column">
+			<div class="ui five column grid">
+				<div class="column">
+					<div class="ui list">
+						<div class="item">
+							<div class="header">關於friday購物</div>
+						</div>
+						<div class="item">
+							friDay簡介
+						</div>
+						<div class="item">
+							公司徵才
+						</div>
+						<div class="item">
+							最新消息
+						</div>
+						<div class="item">
+							招商專區
+						</div>
+						<div class="item">
+							官方部落格
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui list">
+						<div class="item">
+							<div class="header">關於friday購物</div>
+						</div>
+						<div class="item">
+							friDay簡介
+						</div>
+						<div class="item">
+							公司徵才
+						</div>
+						<div class="item">
+							最新消息
+						</div>
+						<div class="item">
+							招商專區
+						</div>
+						<div class="item">
+							官方部落格
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui list">
+						<div class="item">
+							<div class="header">關於friday購物</div>
+						</div>
+						<div class="item">
+							friDay簡介
+						</div>
+						<div class="item">
+							公司徵才
+						</div>
+						<div class="item">
+							最新消息
+						</div>
+						<div class="item">
+							招商專區
+						</div>
+						<div class="item">
+							官方部落格
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui list">
+						<div class="item">
+							<div class="header">關於friday購物</div>
+						</div>
+						<div class="item">
+							friDay簡介
+						</div>
+						<div class="item">
+							公司徵才
+						</div>
+						<div class="item">
+							最新消息
+						</div>
+						<div class="item">
+							招商專區
+						</div>
+						<div class="item">
+							官方部落格
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui list">
+						<div class="item">
+							<div class="header">關於friday購物</div>
+						</div>
+						<div class="item">
+							friDay簡介
+						</div>
+						<div class="item">
+							公司徵才
+						</div>
+						<div class="item">
+							最新消息
+						</div>
+						<div class="item">
+							招商專區
+						</div>
+						<div class="item">
+							官方部落格
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="three wide computer only column">
+			<div class="ui fluid image">
+				<img src="logo3.jpg">
+			</div>
+			<h5 class="ui center aligned header">關於 SSL 認證</h5>
+		</div>
+		
+	
+</div>
+</div>
+</body>
+</html>
